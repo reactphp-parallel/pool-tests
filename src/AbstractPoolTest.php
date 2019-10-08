@@ -6,14 +6,12 @@ use Closure;
 use Money\Money;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
+use WyriHaximus\React\Parallel\ClosedException;
 use function React\Promise\all;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use WyriHaximus\React\Parallel\PoolInterface;
 use function Safe\sleep;
 
-/**
- * @internal
- */
 abstract class AbstractPoolTest extends AsyncTestCase
 {
     public function provideCallablesAndTheirExpectedResults(): iterable
@@ -114,6 +112,22 @@ abstract class AbstractPoolTest extends AsyncTestCase
         foreach ($results as $result) {
             self::assertSame($expectedResult, $result);
         }
+    }
+
+    /**
+     * @dataProvider provideCallablesAndTheirExpectedResults
+     * @param mixed[] $args
+     * @param mixed $expectedResult
+     */
+    public function testClosedPoolShouldNotRunClosures(Closure $callable, array $args, $expectedResult): void
+    {
+        self::expectException(ClosedException::class);
+
+        $loop = Factory::create();
+        $pool = $this->createPool($loop);
+        self::assertTrue($pool->close());
+
+        $this->await($pool->run($callable, $args), $loop);
     }
 
     abstract protected function createPool(LoopInterface $loop): PoolInterface;
