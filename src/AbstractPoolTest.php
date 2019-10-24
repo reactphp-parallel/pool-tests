@@ -4,6 +4,7 @@ namespace WyriHaximus\React\Tests\Parallel;
 
 use Closure;
 use Money\Money;
+use parallel\Future\Error\Killed;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
 use WyriHaximus\React\Parallel\ClosedException;
@@ -128,6 +129,28 @@ abstract class AbstractPoolTest extends AsyncTestCase
         self::assertTrue($pool->close());
 
         $this->await($pool->run($callable, $args), $loop);
+    }
+
+    public function testKillingPoolWhileRunningClosuresShouldNotYieldValidResult(): void
+    {
+        self::expectException(Killed::class);
+
+        $loop = Factory::create();
+        $pool = $this->createPool($loop);
+
+        $loop->futureTick(function () use ($pool) {
+            $pool->kill();
+        });
+
+        try {
+            $this->await($pool->run(function () {
+                sleep(1);
+
+                return 123;
+            }), $loop);
+        } catch (\UnexpectedValueException $unexpectedValueException) {
+            throw $unexpectedValueException->getPrevious();
+        }
     }
 
     abstract protected function createPool(LoopInterface $loop): PoolInterface;
