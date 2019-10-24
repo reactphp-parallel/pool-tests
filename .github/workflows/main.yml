@@ -32,7 +32,3 @@ jobs:
       - name: Execute QA suite
         run: make ci
         if: matrix.composer != 'current'
-      - name: 'Run Example: sleep'
-        run: php examples/sleep.php
-      - name: 'Run Example: versions'
-        run: php examples/versions.php
