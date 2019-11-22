@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0879751483934c0418d2308ae207babc",
+    "content-hash": "33e7583410c4984ce721ecb2850e9ca8",
     "packages": [
         {
             "name": "amphp/amp",
@@ -635,6 +635,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -6830,20 +6831,22 @@
         },
         {
             "name": "wyrihaximus/react-parallel-contracts",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-parallel-contracts.git",
-                "reference": "23d754ac281110c2bf28c3e41078c42e3d74ac9f"
+                "reference": "463a28f9dffaf579ce4ca1026eab50f75b0c77d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-parallel-contracts/zipball/23d754ac281110c2bf28c3e41078c42e3d74ac9f",
-                "reference": "23d754ac281110c2bf28c3e41078c42e3d74ac9f",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-parallel-contracts/zipball/463a28f9dffaf579ce4ca1026eab50f75b0c77d6",
+                "reference": "463a28f9dffaf579ce4ca1026eab50f75b0c77d6",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3"
+                "php": "^7.3",
+                "react/promise": "^3.0 || ^2.7",
+                "wyrihaximus/pool-info": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -6863,7 +6866,7 @@
                 }
             ],
             "description": "Interfaces for ReactPHP ext-parallel related packages",
-            "time": "2019-10-08T09:39:52+00:00"
+            "time": "2019-11-21T21:02:24+00:00"
         },
         {
             "name": "wyrihaximus/react-parallel-future-to-promise-converter",
@@ -7189,9 +7192,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "wyrihaximus/react-parallel-contracts": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
