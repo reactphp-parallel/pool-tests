@@ -31,6 +31,12 @@ lint:
 stan:
 	composer run-script stan --timeout=0
 
+psalm:
+	composer run-script stan --timeout=0
+
+composer-unused:
+	composer unused --timeout=0
+
 unit-coverage:
 	composer run-script unit-coverage --timeout=0
 
