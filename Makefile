@@ -22,5 +22,14 @@ cs:
 cs-fix:
 	composer cs-fix
 
+unit:
+	composer run-script unit --timeout=0
+
 stan:
 	composer run-script stan --timeout=0
+
+unit-coverage:
+	composer run-script unit-coverage --timeout=0
+
+ci-coverage:
+	composer ci-coverage
