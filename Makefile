@@ -32,7 +32,7 @@ stan:
 	composer run-script stan --timeout=0
 
 psalm:
-	composer run-script stan --timeout=0
+	composer run-script psalm --timeout=0
 
 composer-require-checker:
 	composer run-script composer-require-checker --timeout=0
