@@ -34,6 +34,9 @@ stan:
 psalm:
 	composer run-script stan --timeout=0
 
+composer-require-checker:
+	composer run-script composer-require-checker --timeout=0
+
 composer-unused:
 	composer unused
 

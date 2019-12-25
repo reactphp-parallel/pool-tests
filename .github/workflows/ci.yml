@@ -34,7 +34,7 @@ jobs:
       matrix:
         php: [7.3, 7.4]
         composer: [lowest, current, highest]
-        qa: [lint, cs, stan, psalm, unit, composer-require-checker, composer-unused]
+        qa: [lint, cs, stan, psalm, composer-require-checker, composer-unused]
     needs: composer-install
     runs-on: ubuntu-latest
     container:
