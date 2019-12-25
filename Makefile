@@ -24,6 +24,3 @@ cs-fix:
 
 stan:
 	composer run-script stan --timeout=0
-
-ci-coverage:
-	composer ci-coverage

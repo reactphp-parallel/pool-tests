@@ -84,6 +84,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
         $loop = Factory::create();
         $pool = $this->createPool($loop);
 
+        /** @psalm-suppress UndefinedInterfaceMethod */
         $promise = $pool->run($callable, $args)->always(function () use ($pool): void {
             $pool->close();
         });
@@ -149,6 +150,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
                 return 123;
             }), $loop);
         } catch (\UnexpectedValueException $unexpectedValueException) {
+            /** @psalm-suppress InvalidThrow */
             throw $unexpectedValueException->getPrevious();
         }
     }
