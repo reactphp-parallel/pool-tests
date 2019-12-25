@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71a61b24ed973176e67cda441ab2cc53",
+    "content-hash": "5bcc00c2332e544a9c9617f5abbc0932",
     "packages": [
         {
             "name": "amphp/amp",
@@ -5239,12 +5239,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-async-test-utilities.git",
-                "reference": "213771d1ba748213dd7486f10d7499ace29c02ac"
+                "reference": "d67482c70b0feed2e0b16b2c4e20332a756d6045"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/213771d1ba748213dd7486f10d7499ace29c02ac",
-                "reference": "213771d1ba748213dd7486f10d7499ace29c02ac",
+                "url": "https://api.github.com/repos/WyriHaximus/php-async-test-utilities/zipball/d67482c70b0feed2e0b16b2c4e20332a756d6045",
+                "reference": "d67482c70b0feed2e0b16b2c4e20332a756d6045",
                 "shasum": ""
             },
             "require": {
@@ -5277,7 +5277,7 @@
                 }
             ],
             "description": "Test utilities for api-clients packages",
-            "time": "2019-12-25T16:41:08+00:00"
+            "time": "2019-12-25T21:08:53+00:00"
         },
         {
             "name": "wyrihaximus/coding-standard",
