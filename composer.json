@@ -58,7 +58,7 @@
             "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
         ],
         "ensure-installed": "composer install --ansi -n -q",
-        "lint-php": [
+        "lint": [
             "parallel-lint --exclude vendor ."
         ],
         "psalm": [

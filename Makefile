@@ -25,6 +25,9 @@ cs-fix:
 unit:
 	composer run-script unit --timeout=0
 
+lint:
+	composer run-script lint --timeout=0
+
 stan:
 	composer run-script stan --timeout=0
 
