@@ -1,11 +1,11 @@
-# reactphp-parallel-pool-tests
+# ReactPHP Parallel Pool Test set
 
 [![Build Status](https://travis-ci.com/WyriHaximus/reactphp-parallel-pool-tests.png)](https://travis-ci.com/WyriHaximus/reactphp-parallel-pool-tests)
 [![Latest Stable Version](https://poser.pugx.org/WyriHaximus/react-parallel-pool-tests/v/stable.png)](https://packagist.org/packages/WyriHaximus/react-parallel-pool-tests)
 [![Total Downloads](https://poser.pugx.org/WyriHaximus/react-parallel-pool-tests/downloads.png)](https://packagist.org/packages/WyriHaximus/react-parallel-pool-tests)
 [![License](https://poser.pugx.org/wyrihaximus/react-parallel-pool-tests/license.png)](https://packagist.org/packages/wyrihaximus/react-parallel-pool-tests)
 
-ReactPHP bindings around ext-parallel-pool-tests
+Abstract Pool test
 
 ## Install ##
 
