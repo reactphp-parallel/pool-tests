@@ -1,12 +1,12 @@
 parameters:
 	ignoreErrors:
 		- '#Call to an undefined method React\\Promise\\PromiseInterface::always\(\).#'
-		- '#Invalid type Throwable|null to throw.#'
+		- '#Invalid type Throwable\|null to throw.#'
 		- '#Thrown exceptions in a catch block must bundle the previous exception \(see throw statement line 163\). More info: http:\/\/bit.ly\/bundleexception#'
 	ergebnis:
 		classesAllowedToBeExtended:
 			- Exception
-			- WyriHaximus\React\Tests\Parallel\AbstractPoolTest
+			- ReactParallel\Tests\AbstractPoolTest
 
 includes:
 	- vendor/wyrihaximus/async-test-utilities/rules.neon

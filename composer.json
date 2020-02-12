@@ -1,5 +1,5 @@
 {
-    "name": "wyrihaximus/react-parallel-pool-tests",
+    "name": "react-parallel/pool-tests",
     "description": "\ud83c\udfb1 Pool tests for bridging ext-parallel and ReactPHP",
     "license": "MIT",
     "authors": [
@@ -38,7 +38,7 @@
     },
     "autoload": {
         "psr-4": {
-            "WyriHaximus\\React\\Tests\\Parallel\\": "src/"
+            "ReactParallel\\Tests\\": "src/"
         }
     },
     "minimum-stability": "beta",

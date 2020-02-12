@@ -1,9 +1,9 @@
 # ReactPHP Parallel Pool Test set
 
-[![Build Status](https://travis-ci.com/WyriHaximus/reactphp-parallel-pool-tests.png)](https://travis-ci.com/WyriHaximus/reactphp-parallel-pool-tests)
-[![Latest Stable Version](https://poser.pugx.org/WyriHaximus/react-parallel-pool-tests/v/stable.png)](https://packagist.org/packages/WyriHaximus/react-parallel-pool-tests)
-[![Total Downloads](https://poser.pugx.org/WyriHaximus/react-parallel-pool-tests/downloads.png)](https://packagist.org/packages/WyriHaximus/react-parallel-pool-tests)
-[![License](https://poser.pugx.org/wyrihaximus/react-parallel-pool-tests/license.png)](https://packagist.org/packages/wyrihaximus/react-parallel-pool-tests)
+[![Build Status](https://travis-ci.com/Reactphp-parallel/pool-tests.png)](https://travis-ci.com/Reactphp-parallel/pool-tests)
+[![Latest Stable Version](https://poser.pugx.org/React-parallel/pool-tests/v/stable.png)](https://packagist.org/packages/React-parallel/pool-tests)
+[![Total Downloads](https://poser.pugx.org/React-parallel/pool-tests/downloads.png)](https://packagist.org/packages/React-parallel/pool-tests)
+[![License](https://poser.pugx.org/react-parallel/pool-tests/license.png)](https://packagist.org/packages/react-parallel/pool-tests)
 
 Abstract Pool test
 
@@ -12,7 +12,7 @@ Abstract Pool test
 To install via [Composer](http://getcomposer.org/), use the command below, it will automatically detect the latest version and bind it with `~`.
 
 ```
-composer require wyrihaximus/react-parallel-pool-tests --dev
+composer require react-parallel/pool-tests --dev
 ```
 
 ## License ##

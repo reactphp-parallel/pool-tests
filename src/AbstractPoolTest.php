@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\React\Tests\Parallel;
+namespace ReactParallel\Tests;
 
 use Closure;
 use Money\Money;
