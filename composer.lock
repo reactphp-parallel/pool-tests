@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8becdb9951ac29b7a9fe60f22d2465bd",
+    "content-hash": "335da53e15f8cc2495c2e6650adcc79c",
     "packages": [
         {
             "name": "amphp/amp",
@@ -3222,20 +3222,20 @@
         },
         {
             "name": "react-parallel/contracts",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/contracts.git",
-                "reference": "eeaa5ac7b6ad9d476e911de5198471f86e5e94c5"
+                "reference": "b796438787c77fdea14ba4ebb7034fbaa8c188ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/contracts/zipball/eeaa5ac7b6ad9d476e911de5198471f86e5e94c5",
-                "reference": "eeaa5ac7b6ad9d476e911de5198471f86e5e94c5",
+                "url": "https://api.github.com/repos/reactphp-parallel/contracts/zipball/b796438787c77fdea14ba4ebb7034fbaa8c188ba",
+                "reference": "b796438787c77fdea14ba4ebb7034fbaa8c188ba",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3",
+                "php": "^7.4",
                 "react/promise": "^3.0 || ^2.7",
                 "wyrihaximus/pool-info": "^1.0"
             },
@@ -3257,7 +3257,7 @@
                 }
             ],
             "description": "Interfaces for ReactPHP ext-parallel related packages",
-            "time": "2020-02-12T07:01:07+00:00"
+            "time": "2020-02-12T20:42:57+00:00"
         },
         {
             "name": "react/event-loop",
@@ -5551,7 +5551,6 @@
     ],
     "minimum-stability": "beta",
     "stability-flags": {
-        "react-parallel/contracts": 20,
         "wyrihaximus/async-test-utilities": 20,
         "wyrihaximus/coding-standard": 20,
         "wyrihaximus/test-utilities": 20
