@@ -1,9 +1,10 @@
 # ReactPHP Parallel Pool Test set
 
-[![Build Status](https://travis-ci.com/Reactphp-parallel/pool-tests.png)](https://travis-ci.com/Reactphp-parallel/pool-tests)
+![Continuous Integration](https://github.com/reactphp-parallel/pool-tests/workflows/Continuous%20Integration/badge.svg)
 [![Latest Stable Version](https://poser.pugx.org/React-parallel/pool-tests/v/stable.png)](https://packagist.org/packages/React-parallel/pool-tests)
 [![Total Downloads](https://poser.pugx.org/React-parallel/pool-tests/downloads.png)](https://packagist.org/packages/React-parallel/pool-tests)
-[![License](https://poser.pugx.org/react-parallel/pool-tests/license.png)](https://packagist.org/packages/react-parallel/pool-tests)
+[![Type Coverage](https://shepherd.dev/github/reactphp-parallel/pool-tests/coverage.svg)](https://shepherd.dev/github/reactphp-parallel/pool-tests)
+[![License](https://poser.pugx.org/React-parallel/pool-tests/license.png)](https://packagist.org/packages/React-parallel/pool-tests)
 
 Abstract Pool test
 
