@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace ReactParallel\Tests;
 
@@ -10,6 +12,7 @@ use ReactParallel\Contracts\ClosedException;
 use ReactParallel\Contracts\PoolInterface;
 use ReactParallel\EventLoop\KilledRuntime;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
+
 use function range;
 use function React\Promise\all;
 use function Safe\sleep;
@@ -21,16 +24,18 @@ abstract class AbstractPoolTest extends AsyncTestCase
      */
     final public function provideCallablesAndTheirExpectedResults(): iterable
     {
+        $mathFunc = static function (int ...$ints): int {
+            $result = 0;
+
+            foreach ($ints as $int) {
+                $result += $int;
+            }
+
+            return $result;
+        };
+
         yield 'math' => [
-            static function (int ...$ints): int {
-                $result = 0;
-
-                foreach ($ints as $int) {
-                    $result += $int;
-                }
-
-                return $result;
-            },
+            $mathFunc,
             [
                 1,
                 2,
@@ -39,10 +44,10 @@ abstract class AbstractPoolTest extends AsyncTestCase
             6,
         ];
 
+        $moneySameCurrentcyFunc = static fn (Money $euro, Money $usd): bool => $euro->isSameCurrency($usd);
+
         yield 'money-same-currency' => [
-            static function (Money $euro, Money $usd): bool {
-                return $euro->isSameCurrency($usd);
-            },
+            $moneySameCurrentcyFunc,
             [
                 Money::EUR(512),
                 Money::USD(512),
@@ -50,16 +55,18 @@ abstract class AbstractPoolTest extends AsyncTestCase
             false,
         ];
 
+        $moneyAddFunc = static function (Money ...$euros): int {
+            $total = Money::EUR(0);
+
+            foreach ($euros as $euro) {
+                $total = $total->add($euro);
+            }
+
+            return (int) $total->getAmount();
+        };
+
         yield 'money-add' => [
-            static function (Money ...$euros): int {
-                $total = Money::EUR(0);
-
-                foreach ($euros as $euro) {
-                    $total = $total->add($euro);
-                }
-
-                return (int) $total->getAmount();
-            },
+            $moneyAddFunc,
             [
                 Money::EUR(512),
                 Money::EUR(512),
@@ -67,12 +74,14 @@ abstract class AbstractPoolTest extends AsyncTestCase
             1024,
         ];
 
-        yield 'sleep' => [
-            static function (): bool {
-                sleep(1);
+        $sleepFunc = static function (): bool {
+            sleep(1);
 
-                return true;
-            },
+            return true;
+        };
+
+        yield 'sleep' => [
+            $sleepFunc,
             [],
             true,
         ];
@@ -114,6 +123,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
             $promises[$i] = $pool->run($callable, $args);
         }
 
+        /** @psalm-suppress UndefinedInterfaceMethod */
         $results = $this->await(all($promises)->always(static function () use ($pool): void {
             $pool->close();
         }), $loop);
