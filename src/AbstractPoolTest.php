@@ -4,12 +4,11 @@ namespace ReactParallel\Tests;
 
 use Closure;
 use Money\Money;
-use parallel\Future\Error\Killed;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
 use ReactParallel\Contracts\ClosedException;
 use ReactParallel\Contracts\PoolInterface;
-use UnexpectedValueException;
+use ReactParallel\EventLoop\KilledRuntime;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use function range;
 use function React\Promise\all;
@@ -143,7 +142,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
 
     final public function testKillingPoolWhileRunningClosuresShouldNotYieldValidResult(): void
     {
-        self::expectException(Killed::class);
+        self::expectException(KilledRuntime::class);
 
         $loop = Factory::create();
         $pool = $this->createPool($loop);
@@ -152,16 +151,11 @@ abstract class AbstractPoolTest extends AsyncTestCase
             $pool->kill();
         });
 
-        try {
-            $this->await($pool->run(static function (): int {
-                sleep(1);
+        self::assertSame(123, $this->await($pool->run(static function (): int {
+            sleep(1);
 
-                return 123;
-            }), $loop);
-        } catch (UnexpectedValueException $unexpectedValueException) {
-            /** @psalm-suppress InvalidThrow */
-            throw $unexpectedValueException->getPrevious();
-        }
+            return 123;
+        }), $loop));
     }
 
     abstract protected function createPool(LoopInterface $loop): PoolInterface;
