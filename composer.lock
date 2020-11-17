@@ -1793,6 +1793,63 @@
             "time": "2020-05-27T16:41:55+00:00"
         },
         {
+            "name": "lcobucci/clock",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/clock.git",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "infection/infection": "^0.17",
+                "lcobucci/coding-standard": "^6.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/php-code-coverage": "9.1.4",
+                "phpunit/phpunit": "9.3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\Clock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com"
+                }
+            ],
+            "description": "Yet another clock abstraction",
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-08-27T18:56:02+00:00"
+        },
+        {
             "name": "localheinz/diff",
             "version": "1.1.1",
             "source": {
@@ -3694,6 +3751,7 @@
                     "type": "github"
                 }
             ],
+            "abandoned": true,
             "time": "2020-06-27T06:36:25+00:00"
         },
         {
@@ -3982,16 +4040,16 @@
         },
         {
             "name": "react-parallel/event-loop",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/event-loop.git",
-                "reference": "5070e4eb25393d8ada563639b0a1a515f824eb54"
+                "reference": "e859517ed6ef556ca6006ebff13899ed4e78bb93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/event-loop/zipball/5070e4eb25393d8ada563639b0a1a515f824eb54",
-                "reference": "5070e4eb25393d8ada563639b0a1a515f824eb54",
+                "url": "https://api.github.com/repos/reactphp-parallel/event-loop/zipball/e859517ed6ef556ca6006ebff13899ed4e78bb93",
+                "reference": "e859517ed6ef556ca6006ebff13899ed4e78bb93",
                 "shasum": ""
             },
             "require": {
@@ -4000,10 +4058,11 @@
                 "react/event-loop": "^1.1",
                 "react/promise": "^2.7",
                 "reactivex/rxphp": "^2.0",
-                "wyrihaximus/constants": "^1.4.3"
+                "wyrihaximus/constants": "^1.4.3",
+                "wyrihaximus/metrics": "^1.0"
             },
             "require-dev": {
-                "wyrihaximus/async-test-utilities": "^2.2"
+                "wyrihaximus/async-test-utilities": "^3.2"
             },
             "type": "library",
             "extra": {
@@ -4027,14 +4086,66 @@
                     "homepage": "http://wyrihaximus.net/"
                 }
             ],
-            "description": "🌀🌀 Event Loop bridge to ext-parallel Events",
+            "description": "🌀🌉🌀 Event Loop bridge to ext-parallel Events",
             "funding": [
                 {
                     "url": "https://github.com/WyriHaximus",
                     "type": "github"
                 }
             ],
-            "time": "2020-07-07T16:41:12+00:00"
+            "time": "2020-11-17T20:50:24+00:00"
+        },
+        {
+            "name": "react-parallel/object-proxy-attributes",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp-parallel/object-proxy-attributes.git",
+                "reference": "dd73ba13b3f36fb2d7c2bd8eecee2d774d0109d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy-attributes/zipball/dd73ba13b3f36fb2d7c2bd8eecee2d774d0109d0",
+                "reference": "dd73ba13b3f36fb2d7c2bd8eecee2d774d0109d0",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.11",
+                "wyrihaximus/test-utilities": "^2.9"
+            },
+            "type": "library",
+            "extra": {
+                "unused": [
+                    "php"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "ReactParallel\\ObjectProxy\\Attribute\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "http://wyrihaximus.net/"
+                }
+            ],
+            "description": "👨‍🚀🛰👩‍🚀 Attributes for react-parallel/object-proxy",
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-10-31T14:14:06+00:00"
         },
         {
             "name": "react/event-loop",
@@ -6998,6 +7109,56 @@
             ],
             "description": "Like iterator_to_array but doesn't error when handed an array",
             "time": "2018-12-29T20:17:57+00:00"
+        },
+        {
+            "name": "wyrihaximus/metrics",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-metrics.git",
+                "reference": "91dc0d437b63a2516abc4c8c69220857663dcf2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics/zipball/91dc0d437b63a2516abc4c8c69220857663dcf2f",
+                "reference": "91dc0d437b63a2516abc4c8c69220857663dcf2f",
+                "shasum": ""
+            },
+            "require": {
+                "lcobucci/clock": "^2.0",
+                "php": "^7.4",
+                "react-parallel/object-proxy-attributes": "^1",
+                "thecodingmachine/safe": "^1.1",
+                "wyrihaximus/constants": "^1.5"
+            },
+            "require-dev": {
+                "phpbench/phpbench": "^0.17.1",
+                "wyrihaximus/test-utilities": "^2.5 || ^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WyriHaximus\\Metrics\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com"
+                }
+            ],
+            "description": "🕵️‍♀️ Prometheus modelled metric VO's and registry",
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-15T22:52:35+00:00"
         },
         {
             "name": "wyrihaximus/phpstan-rules-wrapper",
