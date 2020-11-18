@@ -1,0 +1,9 @@
+parameters:
+	checkMissingIterableValueType: false
+	ignoreErrors:
+	    - '#Call to an undefined method React\\Promise\\PromiseInterface::always\(\).#'
+	ergebnis:
+		classesAllowedToBeExtended:
+			- Exception
+includes:
+	- ../../vendor/wyrihaximus/async-test-utilities/rules.neon

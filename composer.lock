@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8dc8e3e4f5e632a2bc1ecb015a521e97",
+    "content-hash": "af203956d134d6949321fa7f4875b3cd",
     "packages": [
         {
             "name": "amphp/amp",
@@ -2491,6 +2491,10 @@
                 "money",
                 "vo"
             ],
+            "support": {
+                "issues": "https://github.com/moneyphp/money/issues",
+                "source": "https://github.com/moneyphp/money/tree/master"
+            },
             "time": "2020-03-18T17:49:59+00:00"
         },
         {
@@ -4722,6 +4726,10 @@
                 }
             ],
             "description": "Interfaces for ReactPHP ext-parallel related packages",
+            "support": {
+                "issues": "https://github.com/reactphp-parallel/contracts/issues",
+                "source": "https://github.com/reactphp-parallel/contracts/tree/master"
+            },
             "time": "2020-02-12T20:42:57+00:00"
         },
         {
@@ -4772,6 +4780,10 @@
                 }
             ],
             "description": "🌀🌀 Event Loop bridge to ext-parallel Events",
+            "support": {
+                "issues": "https://github.com/reactphp-parallel/event-loop/issues",
+                "source": "https://github.com/reactphp-parallel/event-loop/tree/master"
+            },
             "funding": [
                 {
                     "url": "https://github.com/WyriHaximus",
@@ -4996,6 +5008,10 @@
                 "reactive",
                 "rx"
             ],
+            "support": {
+                "issues": "https://github.com/ReactiveX/RxPHP/issues",
+                "source": "https://github.com/ReactiveX/RxPHP/tree/master"
+            },
             "time": "2018-04-18T01:34:36+00:00"
         },
         {
@@ -8383,6 +8399,10 @@
                 }
             ],
             "description": "Collection of constants for PHP",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-constants/issues",
+                "source": "https://github.com/WyriHaximus/php-constants/tree/master"
+            },
             "time": "2020-04-02T21:00:04+00:00"
         },
         {
@@ -8423,6 +8443,10 @@
                 }
             ],
             "description": "Like iterator_to_array but doesn't error when handed an array",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-iterator-or-array-to-array/issues",
+                "source": "https://github.com/WyriHaximus/php-iterator-or-array-to-array/tree/master"
+            },
             "time": "2018-12-29T20:17:57+00:00"
         },
         {
@@ -8507,6 +8531,10 @@
                 }
             ],
             "description": "Interface for pool info metrics",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-pool-info/issues",
+                "source": "https://github.com/WyriHaximus/php-pool-info/tree/1.0.0"
+            },
             "time": "2019-09-27T06:28:08+00:00"
         },
         {
