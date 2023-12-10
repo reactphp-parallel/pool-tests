@@ -6,22 +6,18 @@ namespace ReactParallel\Tests;
 
 use Closure;
 use Money\Money;
-use React\EventLoop\Factory;
-use React\EventLoop\LoopInterface;
+use React\EventLoop\Loop;
 use ReactParallel\Contracts\ClosedException;
 use ReactParallel\Contracts\PoolInterface;
 use ReactParallel\EventLoop\KilledRuntime;
 use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 
 use function range;
-use function React\Promise\all;
-use function Safe\sleep;
+use function sleep;
 
 abstract class AbstractPoolTest extends AsyncTestCase
 {
-    /**
-     * @return iterable<mixed>
-     */
+    /** @return iterable<mixed> */
     final public function provideCallablesAndTheirExpectedResults(): iterable
     {
         $mathFunc = static function (int ...$ints): int {
@@ -88,45 +84,46 @@ abstract class AbstractPoolTest extends AsyncTestCase
     }
 
     /**
-     * @param mixed[] $args
-     * @param mixed   $expectedResult
+     * @param (Closure():T) $callable
+     * @param mixed[]       $args
      *
+     * @template T
      * @dataProvider provideCallablesAndTheirExpectedResults
+     * @test
      */
-    final public function testFullRunThrough(Closure $callable, array $args, $expectedResult): void
+    final public function fullRunThrough(Closure $callable, array $args, mixed $expectedResult): void
     {
-        $loop = Factory::create();
-        $pool = $this->createPool($loop);
+        $pool = $this->createPool();
 
-        /** @psalm-suppress UndefinedInterfaceMethod */
-        $promise = $pool->run($callable, $args)->always(static function () use ($pool): void {
+        try {
+            $result = $pool->run($callable, $args);
+        } finally {
             $pool->close();
-        });
-        $result  = $this->await($promise, $loop);
+        }
 
         self::assertSame($expectedResult, $result);
     }
 
     /**
-     * @param mixed[] $args
-     * @param mixed   $expectedResult
+     * @param (Closure():T) $callable
+     * @param mixed[]       $args
      *
+     * @template T
      * @dataProvider provideCallablesAndTheirExpectedResults
+     * @test
      */
-    final public function testFullRunThroughMultipleConsecutiveCalls(Closure $callable, array $args, $expectedResult): void
+    final public function fullRunThroughMultipleConsecutiveCalls(Closure $callable, array $args, mixed $expectedResult): void
     {
-        $loop = Factory::create();
-        $pool = $this->createPool($loop);
+        $pool = $this->createPool();
 
-        $promises = [];
-        foreach (range(0, 8) as $i) {
-            $promises[$i] = $pool->run($callable, $args);
-        }
-
-        /** @psalm-suppress UndefinedInterfaceMethod */
-        $results = $this->await(all($promises)->always(static function () use ($pool): void {
+        try {
+            $results = [];
+            foreach (range(0, 8) as $i) {
+                $results[$i] = $pool->run($callable, $args);
+            }
+        } finally {
             $pool->close();
-        }), $loop);
+        }
 
         foreach ($results as $result) {
             self::assertSame($expectedResult, $result);
@@ -134,39 +131,41 @@ abstract class AbstractPoolTest extends AsyncTestCase
     }
 
     /**
-     * @param mixed[] $args
-     * @param mixed   $expectedResult
+     * @param (Closure():T) $callable
+     * @param mixed[]       $args
      *
+     * @template T
      * @dataProvider provideCallablesAndTheirExpectedResults
+     * @test
      */
-    final public function testClosedPoolShouldNotRunClosures(Closure $callable, array $args, $expectedResult): void
+    final public function closedPoolShouldNotRunClosures(Closure $callable, array $args, mixed $expectedResult): void
     {
         self::expectException(ClosedException::class);
 
-        $loop = Factory::create();
-        $pool = $this->createPool($loop);
+        $pool = $this->createPool();
         self::assertTrue($pool->close());
 
-        $this->await($pool->run($callable, $args), $loop);
+        $pool->run($callable, $args);
     }
 
-    final public function testKillingPoolWhileRunningClosuresShouldNotYieldValidResult(): void
+    /** @test */
+    final public function killingPoolWhileRunningClosuresShouldNotYieldValidResult(): void
     {
         self::expectException(KilledRuntime::class);
 
-        $loop = Factory::create();
-        $pool = $this->createPool($loop);
+        $pool = $this->createPool();
 
-        $loop->futureTick(static function () use ($pool): void {
+        Loop::futureTick(static function () use ($pool): void {
             $pool->kill();
         });
 
-        self::assertSame(123, $this->await($pool->run(static function (): int {
+        /** @phpstan-ignore-next-line */
+        self::assertSame(123, $pool->run(static function (): int {
             sleep(1);
 
             return 123;
-        }), $loop));
+        }));
     }
 
-    abstract protected function createPool(LoopInterface $loop): PoolInterface;
+    abstract protected function createPool(): PoolInterface;
 }
