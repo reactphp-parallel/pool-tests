@@ -13,14 +13,13 @@
         "php": "^8.1",
         "ext-parallel": "*",
         "moneyphp/money": "^3.2.1 || ^4.0.0",
-        "react-parallel/contracts": "^2@dev",
-        "react-parallel/event-loop": "^2@dev",
+        "react-parallel/contracts": "^2.0.0",
+        "react-parallel/event-loop": "^2.0.0",
         "react/event-loop": "^1.5",
         "react/promise": "^2.9 || ^3.1",
         "wyrihaximus/async-test-utilities": "^5 || ^7.2",
         "wyrihaximus/pool-info": "^1.1 || ^2.0"
     },
-    "require-dev": {},
     "autoload": {
         "psr-4": {
             "ReactParallel\\Tests\\": "src/"
