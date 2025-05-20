@@ -10,18 +10,20 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "ext-parallel": "*",
-        "moneyphp/money": "^3.2.1 || ^4.0.0",
-        "react-parallel/contracts": "^2.0.0",
-        "react-parallel/event-loop": "^2.0.0",
+        "moneyphp/money": "^4.7.0",
+        "phpunit/phpunit": "^12.1.6",
+        "react-parallel/contracts": "^2.1.0",
+        "react-parallel/event-loop": "^2.1.0",
         "react/event-loop": "^1.5",
-        "react/promise": "^2.9 || ^3.1",
-        "wyrihaximus/async-test-utilities": "^5 || ^7.2",
-        "wyrihaximus/pool-info": "^1.1 || ^2.0"
+        "react/promise": "^3.2",
+        "wyrihaximus/async-test-utilities": "^9.3.0",
+        "wyrihaximus/pool-info": "^2.0"
     },
     "require-dev": {
-        "react-parallel/runtime": "^3"
+        "react-parallel/runtime": "^3",
+        "wyrihaximus/makefiles": "^0.4.2"
     },
     "autoload": {
         "psr-4": {
@@ -38,12 +40,21 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "ergebnis/composer-normalize": true,
             "icanhazstring/composer-unused": true,
-            "infection/extension-installer": true
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true,
+            "wyrihaximus/makefiles": true
         },
         "platform": {
-            "php": "8.1.13"
+            "php": "8.3.13"
         },
         "sort-packages": true
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon"
+            ]
+        }
     },
     "scripts": {
         "post-install-cmd": [
