@@ -6,6 +6,8 @@ namespace ReactParallel\Tests;
 
 use Closure;
 use Money\Money;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use React\EventLoop\Loop;
 use ReactParallel\Contracts\ClosedException;
 use ReactParallel\Contracts\PoolInterface;
@@ -18,7 +20,7 @@ use function sleep;
 abstract class AbstractPoolTest extends AsyncTestCase
 {
     /** @return iterable<mixed> */
-    final public function provideCallablesAndTheirExpectedResults(): iterable
+    final public static function provideCallablesAndTheirExpectedResults(): iterable
     {
         $mathFunc = static function (int ...$ints): int {
             $result = 0;
@@ -88,9 +90,9 @@ abstract class AbstractPoolTest extends AsyncTestCase
      * @param mixed[]       $args
      *
      * @template T
-     * @dataProvider provideCallablesAndTheirExpectedResults
-     * @test
      */
+    #[Test]
+    #[DataProvider('provideCallablesAndTheirExpectedResults')]
     final public function fullRunThrough(Closure $callable, array $args, mixed $expectedResult): void
     {
         $pool = $this->createPool();
@@ -109,9 +111,9 @@ abstract class AbstractPoolTest extends AsyncTestCase
      * @param mixed[]       $args
      *
      * @template T
-     * @dataProvider provideCallablesAndTheirExpectedResults
-     * @test
      */
+    #[Test]
+    #[DataProvider('provideCallablesAndTheirExpectedResults')]
     final public function fullRunThroughMultipleConsecutiveCalls(Closure $callable, array $args, mixed $expectedResult): void
     {
         $pool = $this->createPool();
@@ -135,9 +137,9 @@ abstract class AbstractPoolTest extends AsyncTestCase
      * @param mixed[]       $args
      *
      * @template T
-     * @dataProvider provideCallablesAndTheirExpectedResults
-     * @test
      */
+    #[Test]
+    #[DataProvider('provideCallablesAndTheirExpectedResults')]
     final public function closedPoolShouldNotRunClosures(Closure $callable, array $args, mixed $expectedResult): void
     {
         self::expectException(ClosedException::class);
@@ -148,7 +150,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
         $pool->run($callable, $args);
     }
 
-    /** @test */
+    #[Test]
     final public function killingPoolWhileRunningClosuresShouldNotYieldValidResult(): void
     {
         self::expectException(KilledRuntime::class);

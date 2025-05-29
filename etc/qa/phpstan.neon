@@ -7,12 +7,15 @@ parameters:
 		-
 			message: '#sleep blocks the event loop#'
 			path: ../../src/AbstractPoolTest.php
+		-
+			identifier: shipmonk.checkedExceptionInYieldingMethod
+			path: ../../src/AbstractPoolTest.php
+			count: 4
+		-
+			identifier: shipmonk.checkedExceptionInCallable
+			path: ../../src/AbstractPoolTest.php
+			count: 1
 	ergebnis:
 		noExtends:
 			classesAllowedToBeExtended:
-				- ReactParallel\EventLoop\CancelledException
-				- ReactParallel\EventLoop\CanceledFuture
-				- ReactParallel\EventLoop\KilledRuntime
-
-includes:
-	- ../../vendor/wyrihaximus/async-test-utilities/rules.neon
+				- ReactParallel\Tests\AbstractPoolTest

@@ -4,16 +4,19 @@ declare(strict_types=1);
 
 namespace ReactParallel\Tests\Tests;
 
+use Closure;
 use ReactParallel\Contracts\ClosedException;
 use ReactParallel\Contracts\PoolInterface;
 use ReactParallel\EventLoop\EventLoopBridge;
 use ReactParallel\Runtime\Runtime;
 use WyriHaximus\PoolInfo\Info;
 
+use function spl_object_id;
+
 final class ImmidiatePool implements PoolInterface
 {
     private int $activeThreads = 0;
-    private bool $closed = false;
+    private bool $closed       = false;
     /** @var array<Runtime> */
     private array $runtimes = [];
 
@@ -36,23 +39,22 @@ final class ImmidiatePool implements PoolInterface
     /**
      * {@inheritDoc}
      */
-    public function run(\Closure $callable, array $args = []): mixed
+    public function run(Closure $callable, array $args = []): mixed
     {
-        if ($this->closed === true) {
+        if ($this->closed) {
             throw ClosedException::create();
         }
 
-        $runtime = Runtime::create($this->eventLoopBridge);
-        $this->runtimes[\spl_object_id($runtime)] = $runtime;
+        $runtime                                 = Runtime::create($this->eventLoopBridge);
+        $this->runtimes[spl_object_id($runtime)] = $runtime;
         $this->activeThreads++;
         try {
-            $result = $runtime->run($callable, $args);
+            /** @phpstan-ignore return.type */
+            return $runtime->run($callable, $args);
         } finally {
-            unset($this->runtimes[\spl_object_id($runtime)]);
+            unset($this->runtimes[spl_object_id($runtime)]);
+            $this->activeThreads--;
         }
-        $this->activeThreads--;
-
-        return $result;
     }
 
     public function close(): bool
