@@ -23,7 +23,7 @@
   },
   "require-dev": {
     "react-parallel/runtime": "^3",
-    "wyrihaximus/makefiles": "^0.7.6"
+    "wyrihaximus/makefiles": "^0.7.7"
   },
   "autoload": {
     "psr-4": {
