@@ -18,7 +18,7 @@
     "react-parallel/event-loop": "^2.1.0",
     "react/event-loop": "^1.5",
     "react/promise": "^3.2",
-    "wyrihaximus/async-test-utilities": "^10.5.0",
+    "wyrihaximus/async-test-utilities": "^10.7.0",
     "wyrihaximus/pool-info": "^2.0"
   },
   "require-dev": {
