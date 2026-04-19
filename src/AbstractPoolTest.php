@@ -44,6 +44,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
 
         $moneySameCurrentcyFunc = static fn (Money $euro, Money $usd): bool => $euro->isSameCurrency($usd);
 
+        /** @phpstan-ignore argument.type,argument.type,argument.type */
         yield 'money-same-currency' => [
             $moneySameCurrentcyFunc,
             [
@@ -73,6 +74,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
         ];
 
         $sleepFunc = static function (): bool {
+            /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.sleep */
             sleep(1);
 
             return true;
@@ -98,6 +100,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
         $pool = $this->createPool();
 
         try {
+            /** @phpstan-ignore method.unresolvableReturnType */
             $result = $pool->run($callable, $args);
         } finally {
             $pool->close();
@@ -121,6 +124,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
         try {
             $results = [];
             foreach (range(0, 8) as $i) {
+                /** @phpstan-ignore method.unresolvableReturnType */
                 $results[$i] = $pool->run($callable, $args);
             }
         } finally {
@@ -147,6 +151,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
         $pool = $this->createPool();
         self::assertTrue($pool->close());
 
+        /** @phpstan-ignore method.unresolvableReturnType */
         $pool->run($callable, $args);
     }
 
@@ -162,7 +167,9 @@ abstract class AbstractPoolTest extends AsyncTestCase
         });
 
         /** @phpstan-ignore-next-line */
+        /** @phpstan-ignore staticMethod.alreadyNarrowedType */
         self::assertSame(123, $pool->run(static function (): int {
+            /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.sleep */
             sleep(1);
 
             return 123;

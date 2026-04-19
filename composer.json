@@ -12,18 +12,18 @@
   "require": {
     "php": "^8.4",
     "ext-parallel": "*",
-    "moneyphp/money": "^4.7.0",
-    "phpunit/phpunit": "^12.1.6",
+    "moneyphp/money": "^4.8.0",
+    "phpunit/phpunit": "^12.5.24",
     "react-parallel/contracts": "^2.1.0",
     "react-parallel/event-loop": "^2.1.0",
-    "react/event-loop": "^1.5",
-    "react/promise": "^3.2",
-    "wyrihaximus/async-test-utilities": "^10.5.0",
+    "react/event-loop": "^1.6.0",
+    "react/promise": "^3.3.0",
+    "wyrihaximus/async-test-utilities": "^12.2.0",
     "wyrihaximus/pool-info": "^2.0"
   },
   "require-dev": {
-    "react-parallel/runtime": "^3",
-    "wyrihaximus/makefiles": "^0.7.11"
+    "react-parallel/runtime": "^3.1.0",
+    "wyrihaximus/makefiles": "^0.7.16"
   },
   "autoload": {
     "psr-4": {
