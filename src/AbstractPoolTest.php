@@ -166,7 +166,6 @@ abstract class AbstractPoolTest extends AsyncTestCase
             $pool->kill();
         });
 
-        /** @phpstan-ignore-next-line */
         /** @phpstan-ignore staticMethod.alreadyNarrowedType */
         self::assertSame(123, $pool->run(static function (): int {
             /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.sleep */
