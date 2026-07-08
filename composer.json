@@ -13,7 +13,7 @@
     "php": "^8.4",
     "ext-parallel": "*",
     "moneyphp/money": "^4.8.0",
-    "phpunit/phpunit": "^12.5.24",
+    "phpunit/phpunit": "^12.5.24 || ^13.0.0",
     "react-parallel/contracts": "^2.1.0",
     "react-parallel/event-loop": "^2.1.0",
     "react/event-loop": "^1.6.0",
