@@ -88,10 +88,15 @@ abstract class AbstractPoolTest extends AsyncTestCase
     }
 
     /**
-     * @param (Closure():T) $callable
-     * @param mixed[]       $args
+     * @param (Closure():T)                                                                           $callable
+     * @param array{}|array{A0}|array{A0,A1}|array{A0,A1,A2}|array{A0,A1,A2,A3}|array{A0,A1,A2,A3,A4} $args
      *
      * @template T
+     * @template A0 (any number of function arguments, see https://github.com/phpstan/phpstan/issues/8214)
+     * @template A1
+     * @template A2
+     * @template A3
+     * @template A4
      */
     #[Test]
     #[DataProvider('provideCallablesAndTheirExpectedResults')]
@@ -100,7 +105,6 @@ abstract class AbstractPoolTest extends AsyncTestCase
         $pool = $this->createPool();
 
         try {
-            /** @phpstan-ignore method.unresolvableReturnType */
             $result = $pool->run($callable, $args);
         } finally {
             $pool->close();
@@ -110,10 +114,15 @@ abstract class AbstractPoolTest extends AsyncTestCase
     }
 
     /**
-     * @param (Closure():T) $callable
-     * @param mixed[]       $args
+     * @param (Closure():T)                                                                           $callable
+     * @param array{}|array{A0}|array{A0,A1}|array{A0,A1,A2}|array{A0,A1,A2,A3}|array{A0,A1,A2,A3,A4} $args
      *
      * @template T
+     * @template A0 (any number of function arguments, see https://github.com/phpstan/phpstan/issues/8214)
+     * @template A1
+     * @template A2
+     * @template A3
+     * @template A4
      */
     #[Test]
     #[DataProvider('provideCallablesAndTheirExpectedResults')]
@@ -124,7 +133,6 @@ abstract class AbstractPoolTest extends AsyncTestCase
         try {
             $results = [];
             foreach (range(0, 8) as $i) {
-                /** @phpstan-ignore method.unresolvableReturnType */
                 $results[$i] = $pool->run($callable, $args);
             }
         } finally {
@@ -137,10 +145,15 @@ abstract class AbstractPoolTest extends AsyncTestCase
     }
 
     /**
-     * @param (Closure():T) $callable
-     * @param mixed[]       $args
+     * @param (Closure():T)                                                                           $callable
+     * @param array{}|array{A0}|array{A0,A1}|array{A0,A1,A2}|array{A0,A1,A2,A3}|array{A0,A1,A2,A3,A4} $args
      *
      * @template T
+     * @template A0 (any number of function arguments, see https://github.com/phpstan/phpstan/issues/8214)
+     * @template A1
+     * @template A2
+     * @template A3
+     * @template A4
      */
     #[Test]
     #[DataProvider('provideCallablesAndTheirExpectedResults')]
@@ -151,7 +164,6 @@ abstract class AbstractPoolTest extends AsyncTestCase
         $pool = $this->createPool();
         self::assertTrue($pool->close());
 
-        /** @phpstan-ignore method.unresolvableReturnType */
         $pool->run($callable, $args);
     }
 
