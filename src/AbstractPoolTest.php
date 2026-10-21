@@ -19,7 +19,7 @@ use function sleep;
 
 abstract class AbstractPoolTest extends AsyncTestCase
 {
-    /** @return iterable<mixed> */
+    /** @return iterable<string, array{(callable(int): int)|(callable(Money, Money): (int|bool))|(callable(): bool), array<int|Money|null>, int|Money|bool}> */
     final public static function provideCallablesAndTheirExpectedResults(): iterable
     {
         $mathFunc = static function (int ...$ints): int {
@@ -82,7 +82,7 @@ abstract class AbstractPoolTest extends AsyncTestCase
 
         yield 'sleep' => [
             $sleepFunc,
-            [],
+            [null],
             true,
         ];
     }
@@ -180,10 +180,13 @@ abstract class AbstractPoolTest extends AsyncTestCase
 
         /** @phpstan-ignore staticMethod.alreadyNarrowedType */
         self::assertSame(123, $pool->run(static function (): int {
+            // Ignoring this functions body because code coverage doesn't pick it up
+            // @codeCoverageIgnoreStart
             /** @phpstan-ignore wyrihaximus.reactphp.blocking.function.sleep */
             sleep(1);
 
             return 123;
+            // @codeCoverageIgnoreEnd
         }));
     }
 

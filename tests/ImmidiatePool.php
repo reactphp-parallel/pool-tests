@@ -49,7 +49,6 @@ final class ImmidiatePool implements PoolInterface
         $this->runtimes[spl_object_id($runtime)] = $runtime;
         $this->activeThreads++;
         try {
-            /** @phpstan-ignore return.type */
             return $runtime->run($callable, $args);
         } finally {
             unset($this->runtimes[spl_object_id($runtime)]);
